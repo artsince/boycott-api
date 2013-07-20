@@ -23,7 +23,7 @@ exports.newVenue =  function (req, res) {
 		else {
 			// TODO better eror handling
 			//console.log(err);
-			return res.send({code: err.code, msg: err.err});
+			return res.status(500).send({code: err.code, msg: err.err});
 		}
 	});
 };
@@ -38,19 +38,28 @@ exports.listAllVenues = function (req, res) {
 		}
 		else {
 			// TODO better eror handling
-			return {code: err.code, msg: 'Error Occurred'};
+			return res.status(500).send({code: err.code, msg: 'Error Occurred'});
 		}
 	});
 };
 
 exports.showVenue = function (req, res) {
-	return VenueModel.findById(req.params.id, function (err, venue) {
+	return VenueModel.findOne({_id: req.params.id}, function (err, venue) {
 		if(!err) {
-			return res.send(venue.toClient());
+			if(venue) {
+				return res.send(venue.toClient());
+			}
+			else {
+				return res.status(404).send({msg: 'Resource Not Found'});
+			}
 		}
 		else {
+			if(err.name == "CastError") {
+				return res.status(404).send({msg: 'Unacceptable Id Value'});
+			}
+
 			// TODO better eror handling
-			return {code: err.code, msg: 'Error Occurred'};
+			return res.status(500).send({code: err.code, msg: 'Error Occurred'});
 		}
 	});
 };
@@ -67,7 +76,7 @@ exports.removeAllVenues = function (req, res) {
 };
 
 exports.approveBoycott = function (req, res) {
-	return res.send({});	
+	return res.send({});
 };
 
 exports.vetoBoycott = function (req, res) {
