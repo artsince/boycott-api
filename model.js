@@ -6,7 +6,7 @@ var apimodel = function () {
 	//mongoose.connect('mongodb://localhost/boycott_db');
 
 	var opinionSchema = new Schema({
-		boycott_id: {type: String, required: true}, 
+		boycott_id: {type: String, required: true},
 		boycott_type: {type: String, enum: ['venue', 'corporation', 'event'], required: true},
 		text: {type: String, required: true},
 		agree_count: {type: Number, min: 0},
@@ -24,18 +24,18 @@ var apimodel = function () {
 
 		// Duplicate the ID field.
 	venueSchema.method('toClient', function() {
-	    var obj = this.toObject();
-	    //Rename fields
-	    obj.id = obj._id;
-	    delete obj._id;
-	    delete obj.__v;
+		var obj = this.toObject();
 
-	    return obj;
+		obj.id = obj._id;
+		delete obj._id;
+		delete obj.__v;
+
+		return obj;
 	});
 
 	var _opinionModel = mongoose.model('opinion', opinionSchema);
 	var _venueModel = mongoose.model('venue', venueSchema);
-	
+
 	return {
 		opinion: _opinionModel,
 		venue: _venueModel

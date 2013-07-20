@@ -1,4 +1,4 @@
-var should   = require('should'), 
+var should   = require('should'),
     assert   = require('assert'),
     request  = require('supertest'),
     mongoose = require('mongoose'),
@@ -8,12 +8,12 @@ var should   = require('should'),
 describe('API routing', function() {
 
   before(function(done) {
-    mongoose.connect('mongodb://localhost/boycott_db');		
+    mongoose.connect('mongodb://localhost/boycott_db');
     done();
   });
 
   after(function(done) {
-    mongoose.disconnect();   
+    mongoose.disconnect();
     done();
   });
 
@@ -47,7 +47,7 @@ describe('API routing', function() {
 
     it('should return one venue', function(done) {
       request(app)
-        .get('/api/venues')        
+        .get('/api/venues')
         .end(function(err, res) {
           if (err) {
             throw err;
@@ -60,7 +60,7 @@ describe('API routing', function() {
 
     it('should not return two venues', function(done) {
       request(app)
-        .get('/api/venues')        
+        .get('/api/venues')
         .end(function(err, res) {
           if (err) {
             throw err;
@@ -177,7 +177,7 @@ describe('API routing', function() {
 
           res.body.approve_count.should.eql(0);
           res.body.veto_count.should.eql(0);
-          
+
           done();
         });
     });

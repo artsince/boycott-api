@@ -1,4 +1,4 @@
-var models = require('./model'); 
+var models = require('./model');
 var VenueModel = models.venue;
 var OpinionModel = models.opinion;
 
