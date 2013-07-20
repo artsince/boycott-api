@@ -16,8 +16,8 @@ app.configure(function () {
 
 // REST API
 app.get('/api', api.api);
-app.post('/api/venues/add', api.newVenue);
 app.get('/api/venues', api.listAllVenues);
+app.post('/api/venues/add', api.newVenue);
 app.get('/api/venues/:id', api.showVenue);
 app.delete('/api/venues/', api.removeAllVenues); // this method should work only for admins
 app.delete('/api/venues/:id', api.removeVenue); // this method should work only for admins
@@ -28,3 +28,5 @@ app.post('/api/opinions/:id/disagree', api.disagreeWithOpinion);
 
 
 app.listen(4242);
+
+module.exports = app;
