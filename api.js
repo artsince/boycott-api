@@ -85,7 +85,7 @@ exports.approveBoycott = function (req, res) {
                     var opinion = new OpinionModel({
                         boycott_id: venue._id,
                         boycott_type: 'venue',
-                        text: req.body.opinion
+                        opinion: req.body.opinion
                     });
 
                     return opinion.save(function (err) {
@@ -133,7 +133,7 @@ exports.vetoBoycott = function (req, res) {
                     var opinion = new OpinionModel({
                         boycott_id: venue._id,
                         boycott_type: 'venue',
-                        text: req.body.opinion
+                        opinion: req.body.opinion
                     });
 
                     return opinion.save(function (err) {
@@ -170,11 +170,49 @@ exports.vetoBoycott = function (req, res) {
     });
 };
 
+// users can agree with an opinion
+// increase agree count and return the object
 exports.agreeWithOpinion = function (req, res) {
-    return res.send({});
+    return OpinionModel.findByIdAndUpdate(req.params.id, {$inc: {agree_count: 1 }}, function (err, opinion) {
+        if(!err) {
+            if(opinion) {
+                return res.send(opinion.toClient());
+            }
+            else {
+                return res.status(404).send({msg: 'Resource Not Found'});
+            }
+        }
+        else {
+            if(err.name == "CastError") {
+                return res.status(404).send({msg: 'Unacceptable Id Value'});
+            }
+
+            // TODO better eror handling
+            return res.status(500).send({code: err.code, msg: 'Error Occurred'});
+        }
+    });
 };
 
+// users can disagree with an opinion
+// increase disagree count and return the object
 exports.disagreeWithOpinion  = function (req, res) {
-    return res.send({});
+    return OpinionModel.findByIdAndUpdate(req.params.id, {$inc: {disagree_count: 1 }}, function (err, opinion) {
+        if(!err) {
+            if(opinion) {
+                return res.send(opinion.toClient());
+            }
+            else {
+                return res.status(404).send({msg: 'Resource Not Found'});
+            }
+        }
+        else {
+            if(err.name == "CastError") {
+                return res.status(404).send({msg: 'Unacceptable Id Value'});
+            }
+
+            // TODO better eror handling
+            return res.status(500).send({code: err.code, msg: 'Error Occurred'});
+        }
+    });
 };
 
