@@ -1,17 +1,34 @@
 var application_root = __dirname,
     express = require('express'),
+    mongoose = require('mongoose'),
     path = require('path'),
-	api = require('./api');
+    api = require('./api');
 
 var app = express();
 
 
 // config 
 app.configure(function () {
-	app.use(express.bodyParser());
-	app.use(express.methodOverride());
-	app.use(app.router);
-	app.use(express.static(path.join(application_root, "public")));
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(app.router);
+    app.use(express.static(path.join(application_root, "public")));
+});
+
+app.configure('production', function() {
+    mongoose.connect('mongodb://localhost/boycott_prod_db');
+});
+
+app.configure('development', function() {
+    mongoose.connect('mongodb://localhost/boycott_dev_db');
+});
+
+app.configure('test', function() {
+    mongoose.connect('mongodb://localhost/boycott_test_db');
+});
+
+app.on('close', function () {
+  mongoose.disconnect();
 });
 
 // REST API
