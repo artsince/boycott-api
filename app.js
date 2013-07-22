@@ -17,7 +17,7 @@ app.configure(function () {
 });
 
 
-mongoose.connect('mongodb://' + cfg.mongo.uri + ':' + cfg.mongo.port + '/' + cfg.mongo.db);
+mongoose.connect(cfg.mongo.connectionString);
 
 app.on('close', function () {
   mongoose.disconnect();
