@@ -2,7 +2,8 @@ var application_root = __dirname,
     express = require('express'),
     mongoose = require('mongoose'),
     path = require('path'),
-    api = require('./api');
+    api = require('./api'),
+    cfg = require('./config');
 
 var app = express();
 
@@ -15,17 +16,8 @@ app.configure(function () {
     app.use(express.static(path.join(application_root, "public")));
 });
 
-app.configure('production', function() {
-    mongoose.connect('mongodb://localhost/boycott_prod_db');
-});
 
-app.configure('development', function() {
-    mongoose.connect('mongodb://localhost/boycott_dev_db');
-});
-
-app.configure('test', function() {
-    mongoose.connect('mongodb://localhost/boycott_test_db');
-});
+mongoose.connect('mongodb://' + cfg.mongo.uri + ':' + cfg.mongo.port + '/' + cfg.mongo.db);
 
 app.on('close', function () {
   mongoose.disconnect();
