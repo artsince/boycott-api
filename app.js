@@ -36,6 +36,6 @@ app.post('/api/opinions/:id/agree', api.agreeWithOpinion);
 app.post('/api/opinions/:id/disagree', api.disagreeWithOpinion);
 
 
-app.listen(4242);
+app.listen(process.env.PORT || 4242);
 
 module.exports = app;
