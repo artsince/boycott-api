@@ -144,7 +144,7 @@ exports.vetoBoycott = function (req, res) {
                         }
                         else {
                             var errObj = {code: err.code, msg: 'Error Occurred'};
-                            // taking back the approve increment if an error occurs while saving the opinion.                            
+                            // taking back the veto increment if an error occurs while saving the opinion.                            
                             VenueModel.update(req.body.id, {$dec: {veto_count: 1}}, function (err, rowsAffected, raw) {
                                 return res.status(500).send(errObj);
                             });
