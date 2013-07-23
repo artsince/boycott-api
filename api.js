@@ -216,3 +216,24 @@ exports.disagreeWithOpinion  = function (req, res) {
     });
 };
 
+exports.listOpinions = function (req, res) {
+    var limit = req.param.limit || 50,
+        filters = {};
+    if(req.param.boycott_id) {
+        filters['boycott_id'] = req.param.boycott_id;
+    }
+
+    return OpinionModel.find(filters).sort({_id: 1}).limit(limit)
+        .exec(function (err, opinions) {
+            if(!err) {
+                return res.send(opinions.map(function (opinion) {
+                    return opinion.toClient();
+                }));
+            }
+            else {
+                // TODO better eror handling
+                return res.status(500).send({code: err.code, msg: 'Error Occurred'});
+            }
+        });
+};
+

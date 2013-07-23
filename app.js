@@ -34,6 +34,7 @@ app.post('/api/venues/approve', api.approveBoycott);
 app.post('/api/venues/veto', api.vetoBoycott);
 app.post('/api/opinions/:id/agree', api.agreeWithOpinion);
 app.post('/api/opinions/:id/disagree', api.disagreeWithOpinion);
+app.get('/api/opinions', api.listOpinions);
 
 
 app.listen(process.env.PORT || 4242);
