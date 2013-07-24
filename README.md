@@ -81,7 +81,7 @@ The response will of JSON Array type.
 
 
 ## Reference
-Each venue contains a name, geograpical coordinates, and a unique Foursquare Id. Users may approve or veto a boycott on a venue with an optional comment. Total number of upvotes and downvotes are stored with the venue as ``àpprove_count``` and ```veto_count```.
+Each venue contains a name, geographical coordinates, and a unique Foursquare Id. Users may approve or veto a boycott on a venue with an optional comment. Total number of upvotes and downvotes are stored with the venue as ``` approve_count ``` and ``` veto_count ```.
 
 User comments are stored as Opinions. Opinions contain a logical link to the related venue via ```boycott_id```. Users can agree or disagree with opinions. Total number of upvotes and downvotes are stored with the opinion as ```agree_count``` and ```disagree_count```.
 
