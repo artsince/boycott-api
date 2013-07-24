@@ -14,10 +14,13 @@ var apimodel = function () {
     var venueSchema = new Schema({
         name: {type: String, required: true},
         foursquare_id: {type: String, required: true, unique: true},
-        latitude: {type: Number, required: true},
-        longitude: {type: Number, required: true},
+        location: {type: [Number]},
         approve_count: {type: Number, min: 0, default: 0},
         veto_count: {type: Number, min: 0, default: 0}
+    });
+
+    venueSchema.index({
+        location: '2dsphere'
     });
 
     // deleting auto-generated _id and __v keys

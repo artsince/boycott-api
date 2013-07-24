@@ -26,6 +26,7 @@ app.on('close', function () {
 // REST API
 app.get('/api', api.api);
 app.get('/api/venues', api.listAllVenues);
+app.post('/api/venues', api.listAllVenues);
 app.post('/api/venues/add', api.newVenue);
 app.get('/api/venues/:id', api.showVenue);
 app.delete('/api/venues/', api.removeAllVenues); // this method should work only for admins
@@ -35,7 +36,8 @@ app.post('/api/venues/veto', api.vetoBoycott);
 app.post('/api/opinions/:id/agree', api.agreeWithOpinion);
 app.post('/api/opinions/:id/disagree', api.disagreeWithOpinion);
 app.get('/api/opinions', api.listOpinions);
-
+app.get('/api/search/venues', api.searchVenues);
+app.post('/api/search/venues', api.searchVenues);
 
 app.listen(process.env.PORT || 4242);
 

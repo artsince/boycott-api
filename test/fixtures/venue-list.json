@@ -1,0 +1,387 @@
+[
+  {
+    "foursquare_id": "4c499eb4b5eec9b63c36fca4",
+    "address": "Kuloğlu Mah. İstiklal Cad. No:121",
+    "name": "Mado",
+    "lng": 28.979787340791894,
+    "lat": 41.03444474523272
+  },
+  {
+    "foursquare_id": "4bcafe7a3740b71323a06165",
+    "address": "Cumhuriyet Cd. Dağ Apt. No:34 Zemin Kat, Elmadağ, Şişli",
+    "name": "Starbucks",
+    "lng": 28.986557810839557,
+    "lat": 41.04188709438886
+  },
+  {
+    "foursquare_id": "50e039e3e4b0167bd87983c1",
+    "address": null,
+    "name": "Şah Cafe",
+    "lng": 28.97989535230184,
+    "lat": 41.03442089709014
+  },
+  {
+    "foursquare_id": "4b505f21f964a520902127e3",
+    "address": "Sıraselviler Cad. No:6 Beyoğlu",
+    "name": "Kızılkayalar",
+    "lng": 28.98468017578125,
+    "lat": 41.03624736222626
+  },
+  {
+    "foursquare_id": "50cc9178e4b01c69e4b585d2",
+    "address": "İstiklal Caddesi",
+    "name": "Mado",
+    "lng": 28.979514469272164,
+    "lat": 41.034367626043505
+  },
+  {
+    "foursquare_id": "51360c77e4b031d779d14d26",
+    "address": "Taksim Meydanı",
+    "name": "Faruk Güllüoğlu",
+    "lng": 28.985136662087776,
+    "lat": 41.03652447338111
+  },
+  {
+    "foursquare_id": "4b72a3b1f964a52095812de3",
+    "address": "Sıraselviler Cad. No:2",
+    "name": "Bambi Cafe",
+    "lng": 28.984812638339008,
+    "lat": 41.03613266026906
+  },
+  {
+    "foursquare_id": "4c13fd0fb7b9c9285c99aa37",
+    "address": "İstiklal Caddesi",
+    "name": "Ayvalık Tostçusu",
+    "lng": 28.9771723022215,
+    "lat": 41.033474475397156
+  },
+  {
+    "foursquare_id": "4b8d0b44f964a520a1e532e3",
+    "address": "Kuloğlu Mh. İstiklal Cad. No:107 Beyoğlu",
+    "name": "Saray Muhallebicisi",
+    "lng": 28.980389930355546,
+    "lat": 41.0347793112375
+  },
+  {
+    "foursquare_id": "4b7976aaf964a520bbfa2ee3",
+    "address": "Hüseyinağa Mh. Kamer Sahne Sok. No:27",
+    "name": "Tarihi Cumhuriyet Meyhanesi",
+    "lng": 28.976968824863434,
+    "lat": 41.03476638132554
+  },
+  {
+    "foursquare_id": "50f19da6e4b094237a6cba4f",
+    "address": null,
+    "name": "yesilçam cafe",
+    "lng": 28.981407505503558,
+    "lat": 41.03558118201925
+  },
+  {
+    "foursquare_id": "4f2dcf37e4b056f83b9b2117",
+    "address": null,
+    "name": "La Bonita",
+    "lng": 28.97731442502127,
+    "lat": 41.03090349723738
+  },
+  {
+    "foursquare_id": "4d79f680b39b2c0f5cfee990",
+    "address": "İstiklal Cad. No:62 Beyoğlu",
+    "name": "DESA",
+    "lng": 28.979144954986904,
+    "lat": 41.03441015654904
+  },
+  {
+    "foursquare_id": "4b4722e6f964a520d32b26e3",
+    "address": "Şahkulu Mh. İstiklal Cd.  Zemin-Asma Kat Beyoğlu",
+    "name": "Starbucks",
+    "lng": 28.975279969089243,
+    "lat": 41.02927801512336
+  },
+  {
+    "foursquare_id": "4b6483bbf964a520d6b92ae3",
+    "address": "İstiklal Cad. No:1",
+    "name": "Burger King",
+    "lng": 28.984540700912476,
+    "lat": 41.036134064317935
+  },
+  {
+    "foursquare_id": "4df2e8fc52b100c2d7f90c4c",
+    "address": "Sıraselviler Cad. No:9 Taksim",
+    "name": "Bambi Anıt Büfe",
+    "lng": 28.984903592442475,
+    "lat": 41.036313699337185
+  },
+  {
+    "foursquare_id": "50e35612e4b0b781bd2f3c78",
+    "address": "Üniversite Caddesi",
+    "name": "özbesin",
+    "lng": 30.50905991961453,
+    "lat": 39.78638569401252
+  },
+  {
+    "foursquare_id": "4e1309b045dde6c62de15259",
+    "address": "Yenibağlar Mh.",
+    "name": "Hasanoglu Pastanesi",
+    "lng": 30.50954349510508,
+    "lat": 39.785768553552636
+  },
+  {
+    "foursquare_id": "4c5180d63940be9a35e5f408",
+    "address": "Meşrutiyet Cad. No:12 Kızılay",
+    "name": "Mado",
+    "lng": 32.85613775253296,
+    "lat": 39.91760329903903
+  },
+  {
+    "foursquare_id": "4caf51c7aef16dcb1983a754",
+    "address": "Meşrutiyet Mh. Servet Apt. No:1",
+    "name": "Aba Piknik",
+    "lng": 32.854957580566406,
+    "lat": 39.91935598424827
+  },
+  {
+    "foursquare_id": "4cd2f2a390f237043f118ee8",
+    "address": "Tunalı Hilmi Cad.",
+    "name": "Özsüt",
+    "lng": 32.86112294189954,
+    "lat": 39.906600581329634
+  },
+  {
+    "foursquare_id": "4bd776c7304fce72d29833ab",
+    "address": "Bestekar Sk. No:29 Kavaklıdere",
+    "name": "Best Western Hotel 2000",
+    "lng": 32.858920161645244,
+    "lat": 39.90943084844736
+  },
+  {
+    "foursquare_id": "4b5c01b4f964a520f12029e3",
+    "address": "Atatürk Blv. 183 Kavaklıdere",
+    "name": "Rixos Grand Ankara",
+    "lng": 32.85650806207169,
+    "lat": 39.910666874147836
+  },
+  {
+    "foursquare_id": "4e61b8141838ad3d0e7bd682",
+    "address": "Meşrutiyet Mh. Meşrutiyet Cd. Karanfil Sk.",
+    "name": "Simit Sarayı",
+    "lng": 32.8553295266892,
+    "lat": 39.91764864892707
+  },
+  {
+    "foursquare_id": "4cefa9320acea35d549defae",
+    "address": "Taksim Meydanı",
+    "name": "Simit Sarayı",
+    "lng": 28.984522721776255,
+    "lat": 41.036133634442756
+  },
+  {
+    "foursquare_id": "4d6cf8c740fc8eec5d4ba1ba",
+    "address": "Taksim Meydanı",
+    "name": "Simit Sarayı",
+    "lng": 28.984914961701634,
+    "lat": 41.03790006016164
+  },
+  {
+    "foursquare_id": "4e5b2b59e4cd875e8ec4b243",
+    "address": "Galatasaray",
+    "name": "Simit Sarayı",
+    "lng": 28.97703017929091,
+    "lat": 41.033306274728076
+  },
+  {
+    "foursquare_id": "4ccbcace511b236a6b06edc9",
+    "address": "Çiğdem Sk. No:3",
+    "name": "Simit Sarayı",
+    "lng": 29.007879152878754,
+    "lat": 41.04184340678619
+  },
+  {
+    "foursquare_id": "4b6494aff964a5205fbf2ae3",
+    "address": "Teşvikiye Cad. No:162 Nişantaşı",
+    "name": "City's Nişantaşı",
+    "lng": 28.992703106930712,
+    "lat": 41.050894683772036
+  },
+  {
+    "foursquare_id": "4fd9c905e4b053a8d3cef56f",
+    "address": "Ulus",
+    "name": "Liv Hospital",
+    "lng": 29.029089561737702,
+    "lat": 41.060672714199995
+  },
+  {
+    "foursquare_id": "4b7bc0dcf964a520e36c2fe3",
+    "address": "İstiklal Cad. Beyoğlu",
+    "name": "Sütiş",
+    "lng": 28.984315395355225,
+    "lat": 41.036101693451165
+  },
+  {
+    "foursquare_id": "4cc54b388062468882443b2f",
+    "address": "Yıldız Mah. Çiğdem Sok. No:3 Beşiktaş",
+    "name": "Dürümce",
+    "lng": 29.008055350010682,
+    "lat": 41.04195144618448
+  },
+  {
+    "foursquare_id": "4df8ea55e4cd2129701b98e2",
+    "address": "Karanfil sokak No: 48",
+    "name": "El Paso",
+    "lng": 32.85563349723816,
+    "lat": 39.91565307544787
+  },
+  {
+    "foursquare_id": "4be04eb998f2a593e1b5c15a",
+    "address": "Tunali Hilmi Cad. No:114/17 Kavaklıdere Çankaya",
+    "name": "Mado",
+    "lng": 32.860445592095324,
+    "lat": 39.90279941291974
+  },
+  {
+    "foursquare_id": "4c46eb0a1ddec9289cb49b32",
+    "address": "Tunalı Hilmi Cd. No: 119/A  Kavaklıdere-Ankara",
+    "name": "Starbucks",
+    "lng": 32.860368,
+    "lat": 39.903528566666665
+  },
+  {
+    "foursquare_id": "4d150956bb488cfaaf859cd4",
+    "address": null,
+    "name": "Ayhan Işık Sokak",
+    "lng": 28.98021938637813,
+    "lat": 41.03442219747307
+  },
+  {
+    "foursquare_id": "51e430bc454a3ce56a558d54",
+    "address": "Şehitmuhtar Mahallesi",
+    "name": "Pirdaloğlu Büfe",
+    "lng": 28.98165464401245,
+    "lat": 41.03596411708979
+  },
+  {
+    "foursquare_id": "51e433dd454a3ce56a58dc0e",
+    "address": "Kuloğlu Mah.",
+    "name": "Gür Gümüş",
+    "lng": 28.981268405914307,
+    "lat": 41.033961134558005
+  },
+  {
+    "foursquare_id": "4c3da97c7d002d7f2b06b018",
+    "address": "Ali Çetinkaya Blv. No:24",
+    "name": "Peximet",
+    "lng": 27.141916751861572,
+    "lat": 38.434698806326594
+  },
+  {
+    "foursquare_id": "4b45f221f964a520ad1226e3",
+    "address": "Mustafa Bey Cd No:24",
+    "name": "Reyhan Pastanesi",
+    "lng": 27.141337394714355,
+    "lat": 38.43226158164614
+  },
+  {
+    "foursquare_id": "4cf26432e9425481f1f36fc5",
+    "address": "Üniversite Caddesi",
+    "name": "İnci Börek",
+    "lng": 30.510975122451782,
+    "lat": 39.78393821677373
+  },
+  {
+    "foursquare_id": "4bb498b95148d13aaeb0523b",
+    "address": "Eskibağlar Mah. Üniversite Cad. No:21",
+    "name": "Espark",
+    "lng": 30.51100730895996,
+    "lat": 39.78308076129392
+  },
+  {
+    "foursquare_id": "51d13194498ef87418e9784f",
+    "address": null,
+    "name": "Yeşil Derik Cafe",
+    "lng": 28.984695,
+    "lat": 41.038904
+  },
+  {
+    "foursquare_id": "4bf05b8e393fc9b678b6012b",
+    "address": "Sıraselviler Cd. No : 10/12 Beyoğlu, Taksim",
+    "name": "Çılgın Dürümcü",
+    "lng": 28.98472309112549,
+    "lat": 41.036182620588235
+  },
+  {
+    "foursquare_id": "4fce93bae4b093adbb2f6aaa",
+    "address": "İstiklal Cad. Balo Sok. No:14/1 Beyoğlu",
+    "name": "Çınaraltı Cafe & Bar",
+    "lng": 28.97895167023915,
+    "lat": 41.03488392859626
+  },
+  {
+    "foursquare_id": "4bd02b1acaff95212d4dcef0",
+    "address": "Terkos Çıkmazı",
+    "name": "Terkos Pasajı",
+    "lng": 28.975699902317785,
+    "lat": 41.03105294839666
+  },
+  {
+    "foursquare_id": "4c9b4dc7a004a1cd0e754f6e",
+    "address": "İstiklal Cad. No:52 Beyoğlu",
+    "name": "Demirören İstiklal",
+    "lng": 28.98040698474292,
+    "lat": 41.0348654742599
+  },
+  {
+    "foursquare_id": "4ba3bb2ef964a5204b5938e3",
+    "address": "Balık Pazarı, Sahne Sok. No:3/B-C Beyoğlu",
+    "name": "Şampiyon Kokoreç",
+    "lng": 28.977770805358887,
+    "lat": 41.03406229675318
+  },
+  {
+    "foursquare_id": "4d2ca735ebacb1f706801650",
+    "address": "İstiklal Caddesi, Beyoğlu",
+    "name": "Patso 7",
+    "lng": 28.979309815315773,
+    "lat": 41.03431811088477
+  },
+  {
+    "foursquare_id": "4df3c44f7d8b18e17230382b",
+    "address": "Hüseyin Ağa Mah. Sahne Sok. No:33",
+    "name": "Kalamar Restorant",
+    "lng": 28.977359904289564,
+    "lat": 41.034630889621376
+  },
+  {
+    "foursquare_id": "4bb8540f53649c7442f446fb",
+    "address": "Defterdar Yokuşu 45-59",
+    "name": "Cafe Firuz",
+    "lng": 28.98254445303862,
+    "lat": 41.031046867933235
+  },
+  {
+    "foursquare_id": "518a97d1498eada148fdcda5",
+    "address": null,
+    "name": "Berat Kebap Pide",
+    "lng": 28.980636,
+    "lat": 41.035889
+  },
+  {
+    "foursquare_id": "4f27d8c5e4b0fa5ce5525fc1",
+    "address": null,
+    "name": "İstanbul pide & simit sarayi",
+    "lng": 30.509706560846258,
+    "lat": 39.78710866283856
+  },
+  {
+    "foursquare_id": "4dcabf64e4cde9e42f8dba7a",
+    "address": null,
+    "name": "Dizzel",
+    "lng": 28.981777014371403,
+    "lat": 41.03567484824028
+  },
+  {
+    "foursquare_id": "51e445c3454a3ce56a6bb40f",
+    "address": "Meşrutiyet Mah.",
+    "name": "Büfe'e",
+    "lng": 28.989191651344296,
+    "lat": 41.05301330251288
+  }
+]

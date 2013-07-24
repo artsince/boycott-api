@@ -22,8 +22,7 @@ describe('API routing', function() {
     var testVenue = {
         name: "Starbucks",
         foursquare_id: "16172612681726",
-        latitude: 12.123124,
-        longitude: 24.2312312,
+        location: [24.2312312, 12.123124],
         agree_count: 0,
         disagree_count: 1
     };
@@ -66,8 +65,8 @@ describe('API routing', function() {
 
           res.body.name.should.eql(testVenue.name);
           res.body.foursquare_id.should.eql(testVenue.foursquare_id);
-          res.body.latitude.should.eql(testVenue.latitude);
-          res.body.longitude.should.eql(testVenue.longitude);
+          res.body.location[1].should.eql(testVenue.location[1]);
+          res.body.location[0].should.eql(testVenue.location[0]);
 
           done();
         });

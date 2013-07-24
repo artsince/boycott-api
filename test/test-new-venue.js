@@ -22,8 +22,7 @@ describe('API routing', function() {
       apimodel.venue.create({
         name: "Starbucks",
         foursquare_id: "16172612681726",
-        latitude: 12.123124,
-        longitude: 24.2312312,
+        location: [24.2312312, 12.123124],
         agree_count: 0,
         disagree_count: 1
       }, function (err) {
@@ -44,8 +43,7 @@ describe('API routing', function() {
         send({
           name: "Starbucks",
           foursquare_id: "16172612681721",
-          latitude: 12.123124,
-          longitude: 24.2312312,
+          location: [24.2312312, 12.123124],
           agree_count: 0,
           disagree_count: 1
         })
@@ -57,11 +55,10 @@ describe('API routing', function() {
       var testVenue = {
         name: "Starbucks",
         foursquare_id: "16172612681720",
-        latitude: 12.123124,
-        longitude: 24.2312312
+        location: [24.2312312, 12.123124]
       };
 
-      var keys = ['name', 'foursquare_id', 'latitude', 'longitude', 'approve_count', 'veto_count', 'id'];
+      var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
 
       request(app)
         .post('/api/venues/add')
@@ -81,8 +78,7 @@ describe('API routing', function() {
       var testVenue = {
         name: "Starbucks",
         foursquare_id: "16172612681720",
-        latitude: 12.123124,
-        longitude: 24.2312312
+        location: [24.2312312, 12.123124]
       };
 
       request(app)
@@ -96,8 +92,8 @@ describe('API routing', function() {
 
           res.body.name.should.eql(testVenue.name);
           res.body.foursquare_id.should.eql(testVenue.foursquare_id);
-          res.body.latitude.should.eql(testVenue.latitude);
-          res.body.longitude.should.eql(testVenue.longitude);
+          res.body.location[1].should.eql(testVenue.location[1]);
+          res.body.location[0].should.eql(testVenue.location[0]);
 
           done();
         });
@@ -107,8 +103,7 @@ describe('API routing', function() {
       var testVenue = {
         name: "Starbucks",
         foursquare_id: "16172612681720",
-        latitude: 12.123124,
-        longitude: 24.2312312
+        location: [24.2312312, 12.123124]
       };
 
       request(app)
@@ -131,8 +126,7 @@ describe('API routing', function() {
       var testVenue = {
         name: "Starbucks",
         foursquare_id: "16172612681726",
-        latitude: 12.123124,
-        longitude: 24.2312312
+        location: [24.2312312, 12.123124]
       };
 
       request(app)

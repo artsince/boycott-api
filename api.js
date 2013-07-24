@@ -10,8 +10,7 @@ exports.newVenue =  function (req, res) {
     var venue = new VenueModel({
         name: req.body.name,
         foursquare_id: req.body.foursquare_id,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        location: req.body.location,
         approve_count: 0,
         veto_count: 0
     });
@@ -28,18 +27,22 @@ exports.newVenue =  function (req, res) {
 };
 
 exports.listAllVenues = function (req, res) {
-    return VenueModel.find(function (err, venues) {
-        if(!err) {
+    var limit = req.query.limit || req.body.limit || 20;
 
-            return res.send(venues.map(function (venue) {
-                return venue.toClient();
-            }));
-        }
-        else {
-            // TODO better eror handling
-            return res.status(500).send({code: err.code, msg: 'Error Occurred'});
-        }
-    });
+    return VenueModel.find()
+        .limit(limit)
+        .exec(function (err, venues) {
+            if(!err) {
+
+                return res.send(venues.map(function (venue) {
+                    return venue.toClient();
+                }));
+            }
+            else {
+                // TODO better eror handling
+                return res.status(500).send({code: err.code, msg: 'Error Occurred'});
+            }
+        });
 };
 
 exports.showVenue = function (req, res) {
@@ -237,3 +240,28 @@ exports.listOpinions = function (req, res) {
         });
 };
 
+exports.searchVenues = function (req, res) {
+    var radius = req.query.radius || req.body.radius || 500,
+        lat = req.query.lat || req.body.lat || undefined,
+        lng = req.query.lng || req.body.lng || undefined,
+        lim = req.query.limit || req.body.limit || 20,
+        filter = {};
+
+    if(lat !== undefined && lng !== undefined) {
+        filter.location = {$nearSphere: [lng, lat], $maxDistance: radius / 6371000};
+    }
+
+    var query = VenueModel.find(filter).limit(lim);
+    return query.exec(function (err, venues) {
+        if(!err) {
+
+            return res.send(venues.map(function (venue) {
+                return venue.toClient();
+            }));
+        }
+        else {
+            // TODO better eror handling
+            return res.status(500).send({code: err.code, msg: 'Error Occurred'});
+        }
+    });
+};

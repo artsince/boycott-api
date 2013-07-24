@@ -23,8 +23,7 @@ describe('API routing', function() {
     var testVenue = {
         name: "Starbucks",
         foursquare_id: "16172612681726",
-        latitude: 12.123124,
-        longitude: 24.2312312,
+        location: [24.2312312, 12.123124],
         agree_count: 0,
         disagree_count: 1
     };
@@ -75,7 +74,7 @@ describe('API routing', function() {
     });
 
     it('should return with opinion id when text is present', function (done) {
-        var keys = ['name', 'foursquare_id', 'latitude', 'longitude', 'approve_count', 'veto_count', 'id', 'opinion_id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'opinion_id'];
 
         request(app)
             .post('/api/venues/veto')
@@ -93,7 +92,7 @@ describe('API routing', function() {
     });
 
     it('should not return with opinion id when text is not present', function (done) {
-        var keys = ['name', 'foursquare_id', 'latitude', 'longitude', 'approve_count', 'veto_count', 'id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
 
         request(app)
             .post('/api/venues/veto')
@@ -111,7 +110,7 @@ describe('API routing', function() {
     });
 
     it('should not return with opinion id when text is empty', function (done) {
-        var keys = ['name', 'foursquare_id', 'latitude', 'longitude', 'approve_count', 'veto_count', 'id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
 
         request(app)
             .post('/api/venues/veto')
@@ -129,7 +128,7 @@ describe('API routing', function() {
     });
 
     it('should not return with opinion id when text is empty', function (done) {
-        var keys = ['name', 'foursquare_id', 'latitude', 'longitude', 'approve_count', 'veto_count', 'id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
 
         request(app)
             .post('/api/venues/veto')
