@@ -81,6 +81,10 @@ The response will of JSON Array type.
 
 
 ## Reference
+Each venue contains a name, geograpical coordinates, and a unique Foursquare Id. Users may approve or veto a boycott on a venue with an optional comment. Total number of upvotes and downvotes are stored with the venue as ``àpprove_count``` and ```veto_count```.
+
+User comments are stored as Opinions. Opinions contain a logical link to the related venue via ```boycott_id```. Users can agree or disagree with opinions. Total number of upvotes and downvotes are stored with the opinion as ```agree_count``` and ```disagree_count```.
+
 The following endpoints are defined so far:
 * ```GET /api/venues``` Lists all venues.
 * ```POST /api/venues/add``` Adds a new venue.
@@ -91,6 +95,8 @@ The following endpoints are defined so far:
 * ```POST /api/opinions/:id/disagree``` Disagree with the comment on the boycott.
 * ```GET /api/opinions``` List all opinions.
 * ```GET '/api/search/venues``` Search for boycotted venues.
+
+Currently, there is neither an authentication mechanism nor the ability to delete venues/opinions. Those features, and others, might come to life in the future.
 
 More details will be added soon, in the meantime you can read the source code.
 
