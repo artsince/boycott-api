@@ -15,6 +15,6 @@ config.mongo.db = 'boycott_test_db';
 // config.mongo.pass = '';
 // config.mongo.port = 27017;
 
-//config.mongo.connectionString = 'mongodb://' + config.mongo.uri + '/' + config.mongo.db;
+config.mongo.connectionString = 'mongodb://' + config.mongo.uri + '/' + config.mongo.db;
 
 module.exports = config;
