@@ -7,12 +7,20 @@ var should   = require('should'),
     app      = require('./../app.js'),
     apimodel = require('./../model'),
     async    = require('async'),
-    test_data = require('./fixtures/venues-with-opinions.js');
+    fs       = require('fs'),
+    test_data;
 
 describe('API routing', function() {
 
   before(function(done) {
-    done();
+    fs.readFile('./test/fixtures/venues-with-opinions.json', 'utf-8', function (err, data) {
+        if(err) {
+          throw err;
+        }
+
+        test_data = JSON.parse(data);
+        done();
+      });
   });
 
   after(function(done) {
@@ -27,11 +35,10 @@ describe('API routing', function() {
         apimodel.venue.create({
           name: venueItem.name,
           foursquare_id: venueItem.foursquare_id,
-          latitude: venueItem.lat,
-          longitude: venueItem.lng
+          location: [venueItem.lng, venueItem.lat]
         }, function (err, venue) {
           if(err) {
-            callback(err);
+            callbackVenue(err);
           }else {
             venueItem.id = venue._id;
 

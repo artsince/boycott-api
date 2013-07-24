@@ -1,6 +1,7 @@
-module.exports = [
+[
   {
     "name": "Starbucks",
+    "foursquare_id": "4bcafe7a3740b71323a06165",
     "lng": 28.986557810839557,
     "lat": 41.04188709438886,
     "opinions": [
@@ -32,6 +33,7 @@ module.exports = [
   },
   {
     "name": "Şah Cafe",
+    "foursquare_id": "50e039e3e4b0167bd87983c1",
     "lng": 28.97989535230184,
     "lat": 41.03442089709014,
     "opinions": [
@@ -79,6 +81,7 @@ module.exports = [
   },
   {
     "name": "Kızılkayalar",
+    "foursquare_id": "4b505f21f964a520902127e3",
     "lng": 28.98468017578125,
     "lat": 41.03624736222626,
     "opinions": [
@@ -166,6 +169,7 @@ module.exports = [
   },
   {
     "name": "Mado",
+    "foursquare_id": "50cc9178e4b01c69e4b585d2",
     "lng": 28.979514469272164,
     "lat": 41.034367626043505,
     "opinions": [
@@ -218,4 +222,4 @@ module.exports = [
         "text": "Bir kar tanesi erir ağzımda"
       }]
   }
-];
+]
