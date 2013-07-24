@@ -22,8 +22,7 @@ describe('API routing', function() {
       apimodel.venue.create({
         name: "Starbucks",
         foursquare_id: "16172612681726",
-        latitude: 12.123124,
-        longitude: 24.2312312,
+        location: [24.2312312, 12.123124],
         agree_count: 0,
         disagree_count: 1
       }, function (err) {
