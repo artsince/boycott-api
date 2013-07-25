@@ -4,6 +4,7 @@ var apimodel = function () {
     var Schema = mongoose.Schema;
 
     var opinionSchema = new Schema({
+        id: {type: String, required: true},
         boycott_id: {type: String, required: true},
         boycott_type: {type: String, enum: ['venue', 'corporation', 'event'], required: true},
         opinion: {type: String, required: true},
@@ -12,6 +13,7 @@ var apimodel = function () {
     });
 
     var venueSchema = new Schema({
+        id: {type: String, required: true},
         name: {type: String, required: true},
         foursquare_id: {type: String, required: true, unique: true},
         location: {type: [Number]},
@@ -27,7 +29,6 @@ var apimodel = function () {
     venueSchema.method('toClient', function() {
         var obj = this.toObject();
 
-        obj.id = obj._id;
         delete obj._id;
         delete obj.__v;
 
@@ -38,7 +39,6 @@ var apimodel = function () {
     opinionSchema.method('toClient', function() {
         var obj = this.toObject();
 
-        obj.id = obj._id;
         delete obj._id;
         delete obj.__v;
 

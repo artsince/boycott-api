@@ -4,6 +4,7 @@ var should   = require('should'),
     assert   = require('assert'),
     request  = require('supertest'),
     mongoose = require('mongoose'),
+    uuid     = require('node-uuid'),
     app      = require('./../app.js'),
     apimodel = require('./../model');
 
@@ -20,6 +21,7 @@ describe('API routing', function() {
   describe('POST /api/venues/add', function() {
     beforeEach(function (done) {
       apimodel.venue.create({
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681726",
         location: [24.2312312, 12.123124],
@@ -41,6 +43,7 @@ describe('API routing', function() {
         .post('/api/venues/add')
         .set('Accept', 'application/json').
         send({
+          id: uuid.v4(),
           name: "Starbucks",
           foursquare_id: "16172612681721",
           location: [24.2312312, 12.123124],
@@ -53,6 +56,7 @@ describe('API routing', function() {
 
     it('should respond with venue keys', function (done) {
       var testVenue = {
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681720",
         location: [24.2312312, 12.123124]
@@ -76,6 +80,7 @@ describe('API routing', function() {
 
     it('should respond with the same values', function (done) {
       var testVenue = {
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681720",
         location: [24.2312312, 12.123124]
@@ -101,6 +106,7 @@ describe('API routing', function() {
 
     it('should respond with approve and veto counts set to zero', function (done) {
       var testVenue = {
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681720",
         location: [24.2312312, 12.123124]
@@ -124,6 +130,7 @@ describe('API routing', function() {
 
     it('should not allow duplicate foursquare ids', function (done) {
       var testVenue = {
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681726",
         location: [24.2312312, 12.123124]

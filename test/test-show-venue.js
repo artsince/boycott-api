@@ -4,6 +4,7 @@ var should   = require('should'),
     assert   = require('assert'),
     request  = require('supertest'),
     mongoose = require('mongoose'),
+    uuid     = require('node-uuid'),
     app      = require('./../app.js'),
     apimodel = require('./../model');
 
@@ -18,8 +19,8 @@ describe('API routing', function() {
   });
 
   describe("GET /api/venues/:id", function () {
-    var venue_id;
     var testVenue = {
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681726",
         location: [24.2312312, 12.123124],
@@ -29,7 +30,6 @@ describe('API routing', function() {
 
     beforeEach(function (done) {
       apimodel.venue.create(testVenue, function (err, res) {
-        venue_id = res.id;
         done();
       });
     });
@@ -42,21 +42,21 @@ describe('API routing', function() {
 
     it('should return object with requested id', function (done) {
        request(app)
-        .get('/api/venues/' + venue_id)
+        .get('/api/venues/' + testVenue.id)
         .set('Accept', 'application/json')
         .end(function (err, res) {
            if (err) {
             throw err;
           }
 
-          res.body.id.should.eql(venue_id);
+          res.body.id.should.eql(testVenue.id);
           done();
         });
     });
 
     it('should return the correct venue', function (done) {
        request(app)
-        .get('/api/venues/' + venue_id)
+        .get('/api/venues/' + testVenue.id)
         .set('Accept', 'application/json')
         .end(function (err, res) {
            if (err) {
@@ -79,11 +79,5 @@ describe('API routing', function() {
         .expect(404, done);
     });
 
-    it('should return 404 for improper id for venue', function (done) {
-       request(app)
-        .get('/api/venues/2312312312')
-        .set('Accept', 'application/json')
-        .expect(404, done);
-    });
   });
 });

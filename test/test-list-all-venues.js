@@ -4,6 +4,7 @@ var should   = require('should'),
     assert   = require('assert'),
     request  = require('supertest'),
     mongoose = require('mongoose'),
+    uuid     = require('node-uuid'),
     app      = require('./../app.js'),
     apimodel = require('./../model');
 
@@ -20,6 +21,7 @@ describe('API routing', function() {
   describe('GET /api/venues', function() {
     beforeEach(function (done) {
       apimodel.venue.create({
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681726",
         location: [24.2312312, 12.123124],

@@ -1,4 +1,5 @@
 var models = require('./model');
+var uuid = require('node-uuid');
 var VenueModel = models.venue;
 var OpinionModel = models.opinion;
 
@@ -8,6 +9,7 @@ exports.api = function (req, res) {
 
 exports.newVenue =  function (req, res) {
     var venue = new VenueModel({
+        id: uuid.v4(),
         name: req.body.name,
         foursquare_id: req.body.foursquare_id,
         location: req.body.location,
@@ -46,7 +48,7 @@ exports.listAllVenues = function (req, res) {
 };
 
 exports.showVenue = function (req, res) {
-    return VenueModel.findOne({_id: req.params.id}, function (err, venue) {
+    return VenueModel.findOne({id: req.params.id}, function (err, venue) {
         if(!err) {
             if(venue) {
                 return res.send(venue.toClient());
@@ -56,10 +58,6 @@ exports.showVenue = function (req, res) {
             }
         }
         else {
-            if(err.name == "CastError") {
-                return res.status(404).send({msg: 'Unacceptable Id Value'});
-            }
-
             // TODO better eror handling
             return res.status(500).send({code: err.code, msg: 'Error Occurred'});
         }
@@ -81,11 +79,12 @@ exports.removeAllVenues = function (req, res) {
 // for approve, just increase the approve_count by one.
 // then, if there is a text, insert an opinion
 exports.approveBoycott = function (req, res) {
-    return VenueModel.findByIdAndUpdate(req.body.id, {$inc: {approve_count: 1 }}, function (err, venue) {
+    return VenueModel.findOneAndUpdate({id: req.body.id}, {$inc: {approve_count: 1 }}, function (err, venue) {
         if(!err) {
             if(venue) {
                 if(req.body.opinion) {
                     var opinion = new OpinionModel({
+                        id: uuid.v4(),
                         boycott_id: venue._id,
                         boycott_type: 'venue',
                         opinion: req.body.opinion
@@ -115,10 +114,6 @@ exports.approveBoycott = function (req, res) {
             }
         }
         else {
-            if(err.name == "CastError") {
-                return res.status(404).send({msg: 'Unacceptable Id Value'});
-            }
-
             // TODO better eror handling
             return res.status(500).send({code: err.code, msg: 'Error Occurred'});
         }
@@ -129,11 +124,12 @@ exports.approveBoycott = function (req, res) {
 // for veto, just increase the veto_count by one.
 // then, if there is a text, insert an opinion
 exports.vetoBoycott = function (req, res) {
-    return VenueModel.findByIdAndUpdate(req.body.id, {$inc: {veto_count: 1 }}, function (err, venue) {
+    return VenueModel.findOneAndUpdate({id: req.body.id}, {$inc: {veto_count: 1 }}, function (err, venue) {
         if(!err) {
             if(venue) {
                 if(req.body.opinion) {
                     var opinion = new OpinionModel({
+                        id: uuid.v4(),
                         boycott_id: venue._id,
                         boycott_type: 'venue',
                         opinion: req.body.opinion
@@ -163,10 +159,6 @@ exports.vetoBoycott = function (req, res) {
             }
         }
         else {
-            if(err.name == "CastError") {
-                return res.status(404).send({msg: 'Unacceptable Id Value'});
-            }
-
             // TODO better eror handling
             return res.status(500).send({code: err.code, msg: 'Error Occurred'});
         }
@@ -176,7 +168,7 @@ exports.vetoBoycott = function (req, res) {
 // users can agree with an opinion
 // increase agree count and return the object
 exports.agreeWithOpinion = function (req, res) {
-    return OpinionModel.findByIdAndUpdate(req.params.id, {$inc: {agree_count: 1 }}, function (err, opinion) {
+    return OpinionModel.findOneAndUpdate({id: req.params.id}, {$inc: {agree_count: 1 }}, function (err, opinion) {
         if(!err) {
             if(opinion) {
                 return res.send(opinion.toClient());
@@ -186,10 +178,6 @@ exports.agreeWithOpinion = function (req, res) {
             }
         }
         else {
-            if(err.name == "CastError") {
-                return res.status(404).send({msg: 'Unacceptable Id Value'});
-            }
-
             // TODO better eror handling
             return res.status(500).send({code: err.code, msg: 'Error Occurred'});
         }
@@ -199,7 +187,7 @@ exports.agreeWithOpinion = function (req, res) {
 // users can disagree with an opinion
 // increase disagree count and return the object
 exports.disagreeWithOpinion  = function (req, res) {
-    return OpinionModel.findByIdAndUpdate(req.params.id, {$inc: {disagree_count: 1 }}, function (err, opinion) {
+    return OpinionModel.findOneAndUpdate({id: req.params.id}, {$inc: {disagree_count: 1 }}, function (err, opinion) {
         if(!err) {
             if(opinion) {
                 return res.send(opinion.toClient());
@@ -209,10 +197,6 @@ exports.disagreeWithOpinion  = function (req, res) {
             }
         }
         else {
-            if(err.name == "CastError") {
-                return res.status(404).send({msg: 'Unacceptable Id Value'});
-            }
-
             // TODO better eror handling
             return res.status(500).send({code: err.code, msg: 'Error Occurred'});
         }

@@ -4,6 +4,7 @@ var should   = require('should'),
     assert   = require('assert'),
     request  = require('supertest'),
     mongoose = require('mongoose'),
+    uuid     = require('node-uuid'),
     app      = require('./../app.js'),
     apimodel = require('./../model'),
     async    = require('async'),
@@ -33,6 +34,7 @@ describe('API routing', function() {
     beforeEach(function (done) {
       async.mapSeries(test_data, function (venueItem, callbackVenue) {
         apimodel.venue.create({
+          id: uuid.v4(),
           name: venueItem.name,
           foursquare_id: venueItem.foursquare_id,
           location: [venueItem.lng, venueItem.lat]
@@ -40,10 +42,11 @@ describe('API routing', function() {
           if(err) {
             callbackVenue(err);
           }else {
-            venueItem.id = venue._id;
+            venueItem.id = venue.id;
 
             async.mapSeries(venueItem.opinions, function (opinionItem, callbackOpinion) {
               apimodel.opinion.create({
+                id: uuid.v4(),
                 boycott_id: venueItem.id,
                 boycott_type: 'venue',
                 opinion: opinionItem.text,
@@ -54,7 +57,7 @@ describe('API routing', function() {
                   callbackOpinion(err);
                 }
                 else {
-                  opinionItem.id = opinion._id;
+                  opinionItem.id = opinion.id;
                   callbackOpinion(null);
                 }
               });
@@ -123,7 +126,7 @@ describe('API routing', function() {
 
     it('should return 6 opinions for the first venue', function (done) {
       request(app)
-        .get('/api/opinions?boycott_id=' + test_data[0]._id)
+        .get('/api/opinions?boycott_id=' + test_data[0].id)
         .set('Accept', 'application/json')
         .end(function (err, res) {
            if (err) {
@@ -138,7 +141,7 @@ describe('API routing', function() {
 
     it('should return 15 opinions for the third venue', function (done) {
       request(app)
-        .get('/api/opinions?limit=15&boycott_id=' + test_data[2]._id)
+        .get('/api/opinions?limit=15&boycott_id=' + test_data[2].id)
         .set('Accept', 'application/json')
         .end(function (err, res) {
            if (err) {

@@ -6,6 +6,7 @@ var should    = require('should'),
     mongoose  = require('mongoose'),
     async     = require('async'),
     fs        = require('fs'),
+    uuid      = require('node-uuid'),
     app       = require('./../app.js'),
     apimodel  = require('./../model'),
     test_data;
@@ -34,17 +35,16 @@ describe('API routing', function() {
 
         async.mapSeries(test_data, function (venueItem, callback) {
           apimodel.venue.create({
+            id: uuid.v4(),
             name: venueItem.name,
             foursquare_id: venueItem.foursquare_id,
-            latitude: venueItem.lat,
-            longitude: venueItem.lng,
             location: [Number(venueItem.lng), Number(venueItem.lat)]
           }, function (err, venue) {
             if(err) {
               callback(err);
             }
 
-            venueItem.id = venue._id;
+            venueItem.id = venue.id;
             callback(null);
           });
         }, function (err, results) {

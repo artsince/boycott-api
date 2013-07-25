@@ -4,6 +4,7 @@ var should   = require('should'),
     assert   = require('assert'),
     request  = require('supertest'),
     mongoose = require('mongoose'),
+    uuid     = require('node-uuid'),
     app      = require('./../app.js'),
     apimodel = require('./../model');
 
@@ -19,8 +20,8 @@ describe('API routing', function() {
 
   // POST /api/venues/veto
   describe('POST /api/venues/veto', function() {
-    var venue_id;
     var testVenue = {
+        id: uuid.v4(),
         name: "Starbucks",
         foursquare_id: "16172612681726",
         location: [24.2312312, 12.123124],
@@ -30,7 +31,6 @@ describe('API routing', function() {
 
     beforeEach(function (done) {
       apimodel.venue.create(testVenue, function (err, res) {
-        venue_id = res.id;
         done();
       });
     });
@@ -45,7 +45,7 @@ describe('API routing', function() {
       request(app)
         .post('/api/venues/veto')
         .set('Accept', 'application/json')
-        .send({id: venue_id})
+        .send({id: testVenue.id})
         .end(function (err, res) {
            if (err) {
             throw err;
@@ -65,21 +65,13 @@ describe('API routing', function() {
         .expect(404, done);
     });
 
-    it('should return 404 for improper venue id', function (done) {
-      request(app)
-        .post('/api/venues/veto')
-        .set('Accept', 'application/json')
-        .send({id: '51eb16bd44'})
-        .expect(404, done);
-    });
-
     it('should return with opinion id when text is present', function (done) {
         var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'opinion_id'];
 
         request(app)
             .post('/api/venues/veto')
             .set('Accept', 'application/json')
-            .send({id: venue_id, opinion: 'Because they only care about profits!'})
+            .send({id: testVenue.id, opinion: 'Because they only care about profits!'})
             .end(function (err, res) {
                if (err) {
                 throw err;
@@ -97,7 +89,7 @@ describe('API routing', function() {
         request(app)
             .post('/api/venues/veto')
             .set('Accept', 'application/json')
-            .send({id: venue_id})
+            .send({id: testVenue.id})
             .end(function (err, res) {
                if (err) {
                 throw err;
@@ -115,7 +107,7 @@ describe('API routing', function() {
         request(app)
             .post('/api/venues/veto')
             .set('Accept', 'application/json')
-            .send({id: venue_id, opinion: ''})
+            .send({id: testVenue.id, opinion: ''})
             .end(function (err, res) {
                if (err) {
                 throw err;
@@ -133,7 +125,7 @@ describe('API routing', function() {
         request(app)
             .post('/api/venues/veto')
             .set('Accept', 'application/json')
-            .send({id: venue_id, opinion: ''})
+            .send({id: testVenue.id, opinion: ''})
             .end(function (err, res) {
                if (err) {
                 throw err;
