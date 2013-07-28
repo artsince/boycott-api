@@ -9,7 +9,8 @@ var apimodel = function () {
         boycott_type: {type: String, enum: ['venue', 'corporation', 'event'], required: true},
         opinion: {type: String, required: true},
         agree_count: {type: Number, min: 0, default: 0},
-        disagree_count: {type: Number, min: 0, default: 0}
+        disagree_count: {type: Number, min: 0, default: 0},
+        date_added: {type: Date, required: true}
     });
 
     var venueSchema = new Schema({
@@ -18,11 +19,26 @@ var apimodel = function () {
         foursquare_id: {type: String, required: true, unique: true},
         location: {type: [Number]},
         approve_count: {type: Number, min: 0, default: 0},
-        veto_count: {type: Number, min: 0, default: 0}
+        veto_count: {type: Number, min: 0, default: 0},
+        date_added: {type: Date, required: true}
     });
 
     venueSchema.index({
         location: '2dsphere'
+    });
+
+    venueSchema.pre('validate', function (next) {
+        if(this.date_added === undefined) {
+            this.date_added = Date.now();
+        }
+        next();
+    });
+
+    opinionSchema.pre('validate', function (next) {
+        if(this.date_added === undefined) {
+            this.date_added = Date.now();
+        }
+        next();
     });
 
     // deleting auto-generated _id and __v keys
