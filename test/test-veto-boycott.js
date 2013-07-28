@@ -41,6 +41,15 @@ describe('API routing', function() {
       });
     });
 
+    it('should respond with JSON', function (done) {
+      request(app)
+        .post('/api/venues/veto')
+        .set('Accept', 'application/json')
+        .send({id: testVenue.id})
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+
     it('should return with veto_count equal to 1', function (done) {
       request(app)
         .post('/api/venues/veto')
@@ -66,7 +75,7 @@ describe('API routing', function() {
     });
 
     it('should return with opinion id when text is present', function (done) {
-        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'opinion_id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'opinion_id', 'date_added'];
 
         request(app)
             .post('/api/venues/veto')
@@ -84,7 +93,7 @@ describe('API routing', function() {
     });
 
     it('should not return with opinion id when text is not present', function (done) {
-        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'date_added'];
 
         request(app)
             .post('/api/venues/veto')
@@ -102,7 +111,7 @@ describe('API routing', function() {
     });
 
     it('should not return with opinion id when text is empty', function (done) {
-        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'date_added'];
 
         request(app)
             .post('/api/venues/veto')
@@ -120,7 +129,7 @@ describe('API routing', function() {
     });
 
     it('should not return with opinion id when text is empty', function (done) {
-        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
+        var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'date_added'];
 
         request(app)
             .post('/api/venues/veto')

@@ -40,6 +40,14 @@ describe('API routing', function() {
       });
     });
 
+    it('should respond with JSON', function (done) {
+      request(app)
+        .get('/api/venues/' + testVenue.id)
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+
     it('should return object with requested id', function (done) {
        request(app)
         .get('/api/venues/' + testVenue.id)

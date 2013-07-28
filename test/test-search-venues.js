@@ -63,6 +63,14 @@ describe('API routing', function() {
       });
     });
 
+    it('should respond with JSON', function (done) {
+      request(app)
+        .get('/api/search/venues?lng=28.985136662087776&lat=41.03652447338111&radius=50')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+
     it('should return more results for a larger radius', function (done) {
       var small_radius, large_radius;
       request(app)

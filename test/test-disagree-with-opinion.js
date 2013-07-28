@@ -55,6 +55,14 @@ describe('API routing', function() {
       });
     });
 
+    it('should respond with JSON', function (done) {
+      request(app)
+        .post('/api/opinions/' + testOpinion.id + '/disagree')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+
     it('should return with disagree count equal to 2', function (done) {
       request(app)
         .post('/api/opinions/' + testOpinion.id + '/disagree')
@@ -78,7 +86,7 @@ describe('API routing', function() {
       });
 
     it('should return with object containing opinion keys', function (done) {
-      var keys = ['boycott_id', 'boycott_type', 'opinion', 'agree_count', 'disagree_count', 'id'];
+      var keys = ['boycott_id', 'boycott_type', 'opinion', 'agree_count', 'disagree_count', 'id', 'date_added'];
       request(app)
         .post('/api/opinions/'+ testOpinion.id +'/disagree')
         .set('Accept', 'application/json')

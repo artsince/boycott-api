@@ -94,6 +94,14 @@ describe('API routing', function() {
         });
     });
 
+    it('should respond with JSON', function (done) {
+      request(app)
+        .get('/api/opinions')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    });
+    
     it('should return 46 opinions for all', function (done) {
       request(app)
         .get('/api/opinions')

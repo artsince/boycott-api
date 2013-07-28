@@ -62,7 +62,7 @@ describe('API routing', function() {
         location: [24.2312312, 12.123124]
       };
 
-      var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id'];
+      var keys = ['name', 'foursquare_id', 'location', 'approve_count', 'veto_count', 'id', 'date_added'];
 
       request(app)
         .post('/api/venues/add')
