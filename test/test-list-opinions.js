@@ -126,7 +126,7 @@ describe('API routing', function() {
             throw err;
           }
 
-          res.body.length.should.eql(46);
+          res.body.length.should.eql(20);
 
           done();
         });
@@ -141,7 +141,7 @@ describe('API routing', function() {
             throw err;
           }
 
-          res.body.length.should.eql(46);
+          res.body.length.should.eql(6);
 
           done();
         });
@@ -156,7 +156,7 @@ describe('API routing', function() {
             throw err;
           }
 
-          res.body.length.should.eql(46);
+          res.body.length.should.eql(15);
 
           done();
         });
