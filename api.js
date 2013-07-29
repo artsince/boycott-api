@@ -30,8 +30,15 @@ exports.newVenue =  function (req, res) {
 
 exports.listAllVenues = function (req, res) {
     var limit = req.query.limit || req.body.limit || 20;
+    var max_date = req.query.max_date || req.query.max_date;
+    var query = {};
 
-    return VenueModel.find()
+    if(max_date !== undefined) {
+        query.date_added = {$lt: max_date};
+    }
+
+    return VenueModel.find(query)
+        .sort({date_added: -1})
         .limit(limit)
         .exec(function (err, venues) {
             if(!err) {
@@ -210,7 +217,7 @@ exports.listOpinions = function (req, res) {
         filters['boycott_id'] = req.param.boycott_id;
     }
 
-    return OpinionModel.find(filters).sort({_id: 1}).limit(limit)
+    return OpinionModel.find(filters).sort({date_added: -1}).limit(limit)
         .exec(function (err, opinions) {
             if(!err) {
                 return res.send(opinions.map(function (opinion) {
@@ -235,7 +242,7 @@ exports.searchVenues = function (req, res) {
         filter.location = {$nearSphere: [lng, lat], $maxDistance: radius / 6371000};
     }
 
-    var query = VenueModel.find(filter).limit(lim);
+    var query = VenueModel.find(filter).sort({date_added: -1}).limit(lim);
     return query.exec(function (err, venues) {
         if(!err) {
 
