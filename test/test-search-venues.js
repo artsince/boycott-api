@@ -32,19 +32,25 @@ describe('API routing', function() {
         }
 
         test_data = JSON.parse(data);
+        var latest_date = Date.now();
 
         async.mapSeries(test_data, function (venueItem, callback) {
           apimodel.venue.create({
             id: uuid.v4(),
             name: venueItem.name,
             foursquare_id: venueItem.foursquare_id,
-            location: [Number(venueItem.lng), Number(venueItem.lat)]
+            location: [Number(venueItem.lng), Number(venueItem.lat)],
+            date_added: latest_date
           }, function (err, venue) {
             if(err) {
               callback(err);
             }
 
             venueItem.id = venue.id;
+            venueItem.date_added = latest_date;
+
+            latest_date = latest_date - 43200000;
+
             callback(null);
           });
         }, function (err, results) {
@@ -123,6 +129,40 @@ describe('API routing', function() {
           }
 
           res.body.length.should.eql(1);
+          done();
+        });
+    });
+
+    it('should return venues in descending order', function (done) {
+      request(app)
+        .get('/api/search/venues?limit=30')
+        .end(function(err, res) {
+          if (err) {
+            throw err;
+          }
+
+          for(var i = 1, len = res.body.length; i < len; ++i) {
+            res.body[i].date_added.should.not.be.above(res.body[i-1].date_added);
+          }
+
+          done();
+        });
+    });
+
+    it('should return venues inserted before the specified date', function (done) {
+      request(app)
+        .get('/api/search/venues?max_date=' + test_data[10].date_added)
+        .end(function(err, res) {
+          if (err) {
+            throw err;
+          }
+
+          test_data[10].date_added.should.not.be.above(res.body[0].date_added)
+          
+          for(var i = 1, len = res.body.length; i < len; ++i) {
+            res.body[i].date_added.should.not.be.above(res.body[i-1].date_added);
+          }
+
           done();
         });
     });
