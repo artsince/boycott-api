@@ -87,14 +87,47 @@ User comments are stored as Opinions. Opinions contain a logical link to the rel
 
 The following endpoints are defined so far:
 * ```GET /api/venues``` Lists all venues.
+
+     __limit__: maximum number of results to return. _(optional, default: 20)_
+
+     __max_date__: earliest insertion date for record. useful for pagination._(optional)_
 * ```POST /api/venues/add``` Adds a new venue.
+
+    __name__: the name of the venue _(required)_
+
+    __foursquare_id__: unique foursquare id for the venue. _(required, unique)_
+    
+    __location__: longitude and latitude of the venue _(required, [lng, lat])_
+
 * ```GET /api/venues/:id``` Shows a venue by id.
 * ```POST /api/venues/approve```Approve/support the boycott.
+    
+    __id__: unique id for the venue _(required)_
+    
+    __opinion__: accompanying comment to approve boycott _(optional)_
 * ```POST /api/venues/veto``` Veto/reject/disagree with the boycott. 
+    
+    __id__: unique id for the venue _(required)_
+    
+    __opinion__: accompanying comment to veto boycott _(optional)_
 * ```POST /api/opinions/:id/agree``` Agree with the comment on the boycott.
 * ```POST /api/opinions/:id/disagree``` Disagree with the comment on the boycott.
 * ```GET /api/opinions``` List all opinions.
+
+     __limit__: maximum number of results to return. _(optional, default: 20)_
+
+     __max_date__: earliest insertion date for record. useful for pagination._(optional)_
 * ```GET '/api/search/venues``` Search for boycotted venues.
+
+    __radius__: radius of the search regions _(optional, default: 500m)_
+
+    __lat__: latitude of the search center _(required along with lng)_
+
+    __lng__: longitude of the search center _(required along with lat)_
+
+    __limit__: maximum number of results to return. _(optional, default: 20)_
+
+    __max_date__: earliest insertion date for record. useful for pagination._(optional)_
 
 Currently, there is neither an authentication mechanism nor the ability to delete venues/opinions. Those features, and others, might come to life in the future.
 
