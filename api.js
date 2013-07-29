@@ -211,10 +211,15 @@ exports.disagreeWithOpinion  = function (req, res) {
 };
 
 exports.listOpinions = function (req, res) {
-    var limit = req.param.limit || 50,
+    var limit = req.query.limit || 50,
+        max_date = req.query.max_date,
         filters = {};
-    if(req.param.boycott_id) {
-        filters['boycott_id'] = req.param.boycott_id;
+
+    if(req.query.boycott_id) {
+        filters.boycott_id = req.query.boycott_id;
+    }
+    if(max_date !== undefined) {
+        filters.date_added = {$lt: max_date};
     }
 
     return OpinionModel.find(filters).sort({date_added: -1}).limit(limit)
@@ -236,10 +241,14 @@ exports.searchVenues = function (req, res) {
         lat = req.query.lat || req.body.lat || undefined,
         lng = req.query.lng || req.body.lng || undefined,
         lim = req.query.limit || req.body.limit || 20,
+        max_date = req.query.max_date || req.body.max_date,
         filter = {};
 
     if(lat !== undefined && lng !== undefined) {
         filter.location = {$nearSphere: [lng, lat], $maxDistance: radius / 6371000};
+    }
+    if(max_date !== undefined) {
+        filter.date_added = {$lt: max_date};
     }
 
     var query = VenueModel.find(filter).sort({date_added: -1}).limit(lim);
