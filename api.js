@@ -73,13 +73,13 @@ exports.showVenue = function (req, res) {
 
 // remove methods should probably be non-public
 exports.removeVenue = function (req, res) {
-    return res.send({});
+    return res.status(401).send({});
 };
 
 
 // remove methods should probably be non-public
 exports.removeAllVenues = function (req, res) {
-    return res.send({});
+    return res.status(401).send({});
 };
 
 // users can approve a boycott with or without an opinion
