@@ -29,7 +29,7 @@ app.get('/api/venues', api.listAllVenues);
 app.post('/api/venues', api.listAllVenues);
 app.post('/api/venues/add', api.newVenue);
 app.get('/api/venues/:id', api.showVenue);
-app.delete('/api/venues/', api.removeAllVenues); // this method should work only for admins
+app.delete('/api/venues', api.removeAllVenues); // this method should work only for admins
 app.delete('/api/venues/:id', api.removeVenue); // this method should work only for admins
 app.post('/api/venues/approve', api.approveBoycott);
 app.post('/api/venues/veto', api.vetoBoycott);
