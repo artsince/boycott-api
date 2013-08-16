@@ -244,9 +244,13 @@ exports.searchVenues = function (req, res) {
         max_date = req.query.max_date || req.body.max_date,
         filter = {};
 
-    if(lat !== undefined && lng !== undefined) {
-        filter.location = {$nearSphere: [lng, lat], $maxDistance: radius / 6371000};
+    if(lat === undefined || lng === undefined) {
+        res.status(400).send();
+        return;
     }
+
+    filter.location = {$nearSphere: [lng, lat], $maxDistance: radius / 6371000};
+
     if(max_date !== undefined) {
         filter.date_added = {$lt: max_date};
     }

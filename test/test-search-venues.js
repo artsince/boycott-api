@@ -77,6 +77,13 @@ describe('API routing', function() {
         .expect(200, done);
     });
 
+    it('should return 400 when lat or lng is not present', function (done) {
+      request(app)
+        .get('/api/search/venues?max_date=' + test_data[10].date_added)
+        .set('Accept', 'application/json')
+        .expect(400, done);
+    });
+
     it('should return more results for a larger radius', function (done) {
       var small_radius, large_radius;
       request(app)
@@ -135,7 +142,8 @@ describe('API routing', function() {
 
     it('should return venues in descending order', function (done) {
       request(app)
-        .get('/api/search/venues?limit=30')
+        .get('/api/search/venues?limit=30&lng=28.985136662087776&lat=41.03652447338111')
+        .expect(200)
         .end(function(err, res) {
           if (err) {
             throw err;
@@ -151,13 +159,14 @@ describe('API routing', function() {
 
     it('should return venues inserted before the specified date', function (done) {
       request(app)
-        .get('/api/search/venues?max_date=' + test_data[10].date_added)
+        .get('/api/search/venues?lng=28.985136662087776&lat=41.03652447338111&max_date=' + test_data[10].date_added)
+        .expect(200)
         .end(function(err, res) {
           if (err) {
             throw err;
           }
 
-          test_data[10].date_added.should.not.be.above(res.body[0].date_added)
+          test_data[10].date_added.should.not.be.above(res.body[0].date_added);
           
           for(var i = 1, len = res.body.length; i < len; ++i) {
             res.body[i].date_added.should.not.be.above(res.body[i-1].date_added);
